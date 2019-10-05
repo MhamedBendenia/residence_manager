@@ -5,7 +5,6 @@
 */
 package application;
 
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import app.connect;
@@ -21,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
@@ -31,11 +31,9 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.table.TableModel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.data.JRTableModelDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
 
@@ -135,7 +133,7 @@ public class Personne extends javax.swing.JFrame {
             rs= stat.executeQuery("select * from document1");
             DefaultListModel<String> listModel = new DefaultListModel<>();
             while(rs.next()){
-                listModel.addElement("Num: "+rs.getString("numchambre")+" | Bloc:"+rs.getString("numbloc"));
+                listModel.addElement("Num: "+rs.getString("numchambre")+" | Pavillon:"+rs.getString("numbloc"));
             }
             numchambret.setModel(listModel);
         }catch(SQLException e){
@@ -249,6 +247,7 @@ public class Personne extends javax.swing.JFrame {
 
         nomt.setText("FR");
         nomt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nomt.setNextFocusableComponent(prenomt);
         nomt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomtActionPerformed(evt);
@@ -256,6 +255,7 @@ public class Personne extends javax.swing.JFrame {
         });
 
         lieut.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        lieut.setNextFocusableComponent(filièret);
         lieut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lieutActionPerformed(evt);
@@ -289,6 +289,7 @@ public class Personne extends javax.swing.JFrame {
 
         prenomt.setText("FR");
         prenomt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        prenomt.setNextFocusableComponent(nom_art);
         prenomt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prenomtActionPerformed(evt);
@@ -305,6 +306,7 @@ public class Personne extends javax.swing.JFrame {
         });
 
         adresset.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        adresset.setNextFocusableComponent(wilayat);
         adresset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adressetActionPerformed(evt);
@@ -313,6 +315,7 @@ public class Personne extends javax.swing.JFrame {
 
         catt.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         catt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Etudiant", "Autre" }));
+        catt.setNextFocusableComponent(numchambret);
         catt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cattActionPerformed(evt);
@@ -399,11 +402,14 @@ public class Personne extends javax.swing.JFrame {
         id.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
         id.setText("identifiant :");
 
+        id_cardt.setNextFocusableComponent(nomt);
         id_cardt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 id_cardtActionPerformed(evt);
             }
         });
+
+        dateNst.setNextFocusableComponent(lieut);
 
         actualiser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/icones/icons8-rafraîchir-26.png"))); // NOI18N
         actualiser.setToolTipText("Actualiser");
@@ -430,6 +436,7 @@ public class Personne extends javax.swing.JFrame {
             }
         });
 
+        numchambret.setNextFocusableComponent(jButton1);
         jScrollPane2.setViewportView(numchambret);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/icones/icons8-mises-à-jour-disponibles-26.png"))); // NOI18N
@@ -451,12 +458,14 @@ public class Personne extends javax.swing.JFrame {
             }
         });
 
+        filièret.setNextFocusableComponent(niveaut);
         filièret.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filièretActionPerformed(evt);
             }
         });
 
+        niveaut.setNextFocusableComponent(num_bact);
         niveaut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 niveautActionPerformed(evt);
@@ -484,6 +493,7 @@ public class Personne extends javax.swing.JFrame {
         });
 
         nom_art.setText("AR");
+        nom_art.setNextFocusableComponent(prenom_art);
         nom_art.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nom_artActionPerformed(evt);
@@ -491,12 +501,21 @@ public class Personne extends javax.swing.JFrame {
         });
 
         prenom_art.setText("AR");
+        prenom_art.setNextFocusableComponent(dateNst);
 
         telephone1.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
         telephone1.setText("Nationalité :");
 
+        wilayat.setNextFocusableComponent(nationalitét);
+
+        nationalitét.setNextFocusableComponent(catt);
+
         adresse3.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
         adresse3.setText("Niveau :");
+
+        num_bact.setNextFocusableComponent(année_bact);
+
+        année_bact.setNextFocusableComponent(adresset);
 
         adresse4.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
         adresse4.setText("Numéro BAC :");
@@ -734,20 +753,25 @@ public class Personne extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Formulaire vide !");
         }else{
 
-            String reportSource = "/application/idcard.jasper";
+            String reportSource = "/application/attestation.jasper";
             InputStream reportFile = null;
             reportFile = getClass().getResourceAsStream(reportSource);
+            Connection conn = cnx.obtenirconnexion();
+            Map<String, Object> params = new HashMap<>();
+            params.put("card_id", id_cardt.getText());
+            params.put("year", Calendar.getInstance().get(Calendar.YEAR));
+            params.put("date", new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
             try
             {
-                JasperPrint jasperPrint = JasperFillManager.fillReport(reportFile, null, new JRTableModelDataSource(model));
+                JasperPrint jasperPrint = JasperFillManager.fillReport(reportFile, params, conn);
                 JasperViewer.viewReport(jasperPrint,false);
             }
             catch (JRException ex)
             {
-                JOptionPane.showMessageDialog(null,"Erreur !"+ex.getMessage());
+                JOptionPane.showMessageDialog(null,"Erreur ! "+ex.getMessage());
             }
         }
-
+ 
     }//GEN-LAST:event_ImprimerActionPerformed
 
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed

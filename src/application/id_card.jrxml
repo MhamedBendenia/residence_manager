@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="240" pageHeight="153" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="aa197281-cd14-4ccb-829c-1f6e3256f995">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="32"/>
+	<parameter name="card_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     personne1.`card_id` AS personne1_card_id,
+     personne1.`nom` AS personne1_nom,
+     personne1.`prénom` AS personne1_prénom,
+     personne1.`dateNs` AS personne1_dateNs,
+     personne1.`lieu` AS personne1_lieu,
+     personne1.`filière` AS personne1_filière,
+     personne1.`numchambre` AS personne1_numchambre,
+     personne1.`imgpath` AS personne1_imgpath
+FROM
+     `personne1` personne1
+WHERE
+      personne1.`card_id` =45]]>
+	</queryString>
+	<field name="personne1_card_id" class="java.lang.String"/>
+	<field name="personne1_nom" class="java.lang.String"/>
+	<field name="personne1_prénom" class="java.lang.String"/>
+	<field name="personne1_dateNs" class="java.sql.Date"/>
+	<field name="personne1_lieu" class="java.lang.String"/>
+	<field name="personne1_filière" class="java.lang.String"/>
+	<field name="personne1_numchambre" class="java.lang.String"/>
+	<field name="personne1_imgpath" class="java.lang.String"/>
+	<background>
+		<band height="153">
+			<image>
+				<reportElement x="0" y="-9" width="240" height="153" uuid="1efa8506-dc2e-4062-86d3-d6b3efdff2f6"/>
+				<imageExpression><![CDATA["C:\\Users\\Med\\Desktop\\ODR9PI0.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="94" width="32" height="14" forecolor="#330099" uuid="d1d9359b-9808-4aae-af64-c0367305fe8c"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[Filière:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="52" width="131" height="14" uuid="1ebf4111-e4ff-4326-9120-14be1bf8d5fc"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personne1_nom}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="169" y="60" width="64" height="64" uuid="a56f60eb-dd3f-4f1f-9214-ab99298abe25"/>
+				<imageExpression><![CDATA[$F{personne1_imgpath}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="6" y="52" width="32" height="14" forecolor="#330099" uuid="61f68029-93be-4789-8cc4-9e6ec92a1bb0"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[Nom:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="10" width="222" height="8" uuid="79d26148-79a5-4005-8f3f-87cea2f2a51b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Ministère de l'enseignement supérieur et de la recherche scientifique]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="108" width="32" height="14" forecolor="#330099" uuid="a67d3e36-14e4-4967-8dfc-468d32f2ea27"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[Code:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="80" width="131" height="14" uuid="b04014d5-e4d1-4643-8cf3-2e57a7b29f2f"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personne1_dateNs}.toString()+" à "+$F{personne1_lieu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="108" width="131" height="14" uuid="c440e6ce-6568-4524-a311-804f6a0adcba"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personne1_card_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="80" width="32" height="14" forecolor="#330099" uuid="b9b25d83-6087-4e83-a137-dbdc91581075"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[Née le:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="122" width="32" height="14" forecolor="#330099" uuid="0216e52f-ee16-435e-81a3-434f9bfb9bb5"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[Chambre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="66" width="131" height="14" uuid="1d848e78-90d9-4792-9336-24d20953db52"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personne1_prénom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="94" width="131" height="14" uuid="6c5174a5-af73-4a90-b50f-c7b2f6f646c7"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personne1_filière}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="122" width="131" height="14" uuid="f42e2f56-efcd-408d-8ceb-8d7e4b07be9c"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personne1_numchambre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="66" width="32" height="14" forecolor="#330099" uuid="d87b7363-e518-4d2a-89f5-862dfe13f4ba"/>
+				<textElement>
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[Prénom:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="18" width="222" height="8" uuid="44c0aa76-a5bf-4fe0-864d-871b7b306aa2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Office national des oeuvres universitaires ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="26" width="222" height="8" uuid="cf701067-8b5f-4fb6-b33e-2895253fbc8a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Direction des oeuvres universitaires Mostaganem]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="34" width="222" height="8" uuid="a08e2307-88f8-4264-a8fc-c6190cc1457f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Résidence universitaire "Majdoub"]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>
