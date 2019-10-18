@@ -26,7 +26,7 @@ public class connect {
     //conexion a la base de donnée
  try{
      
-    con=DriverManager.getConnection(urlBasededonnee+unicode,"root","lekhradu27");
+    con=DriverManager.getConnection(urlBasededonnee+unicode,"root","");
      System.out.println("connexion a bd réussie");
      
 }catch (SQLException ex)  {

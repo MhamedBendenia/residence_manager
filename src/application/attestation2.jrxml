@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bb1a4c6a-75f9-427f-a1ee-fe8ab98c3965">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="184"/>
+	<parameter name="card_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="year" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     userinfo.`BIRTHDAY` AS userinfo_BIRTHDAY,
+     userinfo.`CITY` AS userinfo_CITY,
+     userinfo.`nom_ar` AS userinfo_nom_ar,
+     userinfo.`prénom_ar` AS userinfo_prénom_ar,
+     userinfo.`numchambre` AS userinfo_numchambre,
+     userinfo.`CardNo` AS userinfo_CardNo,
+     userinfo.`Education_ar` AS userinfo_Education_ar
+FROM
+     `userinfo` userinfo
+WHERE
+     userinfo.`CardNo` LIKE $P{card_id}]]>
+	</queryString>
+	<field name="userinfo_BIRTHDAY" class="java.sql.Date"/>
+	<field name="userinfo_CITY" class="java.lang.String"/>
+	<field name="userinfo_nom_ar" class="java.lang.String"/>
+	<field name="userinfo_prénom_ar" class="java.lang.String"/>
+	<field name="userinfo_numchambre" class="java.lang.String"/>
+	<field name="userinfo_CardNo" class="java.lang.String"/>
+	<field name="userinfo_Education_ar" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="171" splitType="Stretch">
+			<staticText>
+				<reportElement x="187" y="0" width="182" height="20" uuid="0caca22c-9bff-453b-a07a-dbde56eba3c9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الجمهورية الجزائرية الديمقراطية الشعبية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="54" width="130" height="20" uuid="ecd5806c-e542-49e2-bb73-9135d6a3b6f7"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[الديوان الوطني للخدمات الجامعية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="74" width="130" height="20" uuid="2c9015d1-af68-4d70-9f50-39250c8ea38d"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[مديرية الخدمات الجامعية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="94" width="130" height="20" uuid="f86b6f0d-b53b-4bdc-9a24-60149f38ea9f"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[الإقامة الجامعية مجدوب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="114" width="130" height="20" uuid="96ae5adf-38db-472d-9d3e-fb726ee74574"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[مصلحة الإيواء]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="34" width="130" height="20" uuid="6c7ff8b2-6367-49e7-ac38-f2bcedbb4107"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[وزارة التعليم العالي و البحث العلمي]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="11" y="34" width="107" height="20" uuid="b70b51e6-5f9c-4aef-86b6-f1fc85f3a581"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["مستغانم يوم "+$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="134" width="130" height="20" uuid="30017352-3d70-4c38-bac5-758eb0cc3093"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["رقم............/م.إ/"+$P{year}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="91" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="167" y="15" width="228" height="40" uuid="be76c419-ab04-4181-9e89-18b3bdc50dd3"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="167" y="16" width="228" height="40" uuid="b3b6e3ec-1eb2-47a4-bf7e-ef19d28efddd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[شهادة  الإيواء]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="376" splitType="Stretch">
+			<staticText>
+				<reportElement x="326" y="0" width="199" height="20" uuid="90312a07-b28c-4b53-8f98-b54e2b5968ed"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[نحن مدير الإقامة الجامعية "مجدوب", نصرح أن]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="507" y="32" width="48" height="20" uuid="555a4ee6-e4e0-4970-89d8-0329245e0ff1"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[الطالب (ة)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="254" y="32" width="241" height="20" uuid="e2f7aa8c-c962-4c38-a4f2-59b0dd8938ea"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userinfo_prénom_ar}+" "+$F{userinfo_nom_ar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="483" y="52" width="72" height="20" uuid="16a8bb28-5442-409f-9e08-130f2f8c8f0e"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[المولود (ة) بتاريخ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="52" width="116" height="20" uuid="461517d9-614a-4155-b572-7e8ea3a4d58e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userinfo_BIRTHDAY}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="336" y="52" width="6" height="20" uuid="18fbf2f6-48fb-4782-a8a0-55c373b4de91"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ب]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="226" y="52" width="100" height="20" uuid="3b751289-257e-4b51-923b-43ddb62bb549"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userinfo_CITY}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="507" y="72" width="48" height="20" uuid="3f61d19f-2392-4389-b51b-b4c724ad5b5d"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[الشعبة :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="407" y="72" width="100" height="20" uuid="f5584427-d3f3-4961-862a-6ff8991ca398"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userinfo_Education_ar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="507" y="105" width="48" height="20" uuid="8007166c-3d77-47eb-85b5-b4b21b81e90c"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[مقيم ب: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="105" width="154" height="20" uuid="29fcb2f0-7f66-40a0-aa26-5d4be07e3d08"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userinfo_numchambre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="495" y="125" width="60" height="20" uuid="68f46174-1467-4c7b-b44c-d25a221e637c"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[للسنة الجامعية :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="358" y="125" width="137" height="20" uuid="3d6fc6ab-9553-4ef4-b89f-396fa9baccd6"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}+1+" / "+$P{year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="437" y="159" width="100" height="20" uuid="a79afade-5bf4-4960-abe1-a47e4bb89bba"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[لغرض إكمال ملف إداري]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="189" width="415" height="20" uuid="baf25637-87e3-407e-8326-bc2ddc774000"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[سلمت هذه الشهادة بطلب من المعني بالأمر للإدلاء بها في حدود ما يسمح به القانون.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="289" width="100" height="20" uuid="bca74b31-6145-45c6-8cc2-e9b88f04f187"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المدير]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -2,63 +2,70 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="240" pageHeight="153" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="aa197281-cd14-4ccb-829c-1f6e3256f995">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="32"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="card_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="img" class="java.io.InputStream">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     personne1.`card_id` AS personne1_card_id,
-     personne1.`nom` AS personne1_nom,
-     personne1.`prénom` AS personne1_prénom,
-     personne1.`dateNs` AS personne1_dateNs,
-     personne1.`lieu` AS personne1_lieu,
-     personne1.`filière` AS personne1_filière,
-     personne1.`numchambre` AS personne1_numchambre,
-     personne1.`imgpath` AS personne1_imgpath
+     userinfo.`CardNo` AS userinfo_CardNo,
+     userinfo.`name` AS userinfo_name,
+     userinfo.`lastname` AS userinfo_lastname,
+     userinfo.`BIRTHDAY` AS userinfo_BIRTHDAY,
+     userinfo.`CITY` AS userinfo_CITY,
+     userinfo.`Education` AS userinfo_Education,
+     userinfo.`Badgenumber` AS userinfo_Badgenumber,
+     userinfo.`numchambre` AS userinfo_numchambre
 FROM
-     `personne1` personne1
+     `userinfo` userinfo
 WHERE
-      personne1.`card_id` =45]]>
+     userinfo.`CardNo` LIKE $P{card_id}]]>
 	</queryString>
-	<field name="personne1_card_id" class="java.lang.String"/>
-	<field name="personne1_nom" class="java.lang.String"/>
-	<field name="personne1_prénom" class="java.lang.String"/>
-	<field name="personne1_dateNs" class="java.sql.Date"/>
-	<field name="personne1_lieu" class="java.lang.String"/>
-	<field name="personne1_filière" class="java.lang.String"/>
-	<field name="personne1_numchambre" class="java.lang.String"/>
-	<field name="personne1_imgpath" class="java.lang.String"/>
+	<field name="userinfo_CardNo" class="java.lang.String"/>
+	<field name="userinfo_name" class="java.lang.String"/>
+	<field name="userinfo_lastname" class="java.lang.String"/>
+	<field name="userinfo_BIRTHDAY" class="java.sql.Date"/>
+	<field name="userinfo_CITY" class="java.lang.String"/>
+	<field name="userinfo_Education" class="java.lang.String"/>
+	<field name="userinfo_Badgenumber" class="java.lang.String"/>
+	<field name="userinfo_numchambre" class="java.lang.String"/>
 	<background>
 		<band height="153">
 			<image>
 				<reportElement x="0" y="-9" width="240" height="153" uuid="1efa8506-dc2e-4062-86d3-d6b3efdff2f6"/>
-				<imageExpression><![CDATA["C:\\Users\\Med\\Desktop\\ODR9PI0.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\dist\\ODR9PI0.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
 	<title>
 		<band height="153" splitType="Stretch">
+			<image>
+				<reportElement x="117" y="103" width="100" height="50" uuid="8d14f504-e3e5-4965-9f11-45c816182096"/>
+				<imageExpression><![CDATA["C:\\dist\\segnteur.png"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="6" y="94" width="32" height="14" forecolor="#330099" uuid="d1d9359b-9808-4aae-af64-c0367305fe8c"/>
+				<reportElement x="13" y="102" width="32" height="14" forecolor="#330099" uuid="d1d9359b-9808-4aae-af64-c0367305fe8c"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
 				<text><![CDATA[Filière:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="38" y="52" width="131" height="14" uuid="1ebf4111-e4ff-4326-9120-14be1bf8d5fc"/>
+				<reportElement x="45" y="60" width="131" height="14" uuid="1ebf4111-e4ff-4326-9120-14be1bf8d5fc"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_nom}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_name}]]></textFieldExpression>
 			</textField>
 			<image scaleImage="FillFrame">
 				<reportElement x="169" y="60" width="64" height="64" uuid="a56f60eb-dd3f-4f1f-9214-ab99298abe25"/>
-				<imageExpression><![CDATA[$F{personne1_imgpath}]]></imageExpression>
+				<imageExpression><![CDATA[$P{img}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="6" y="52" width="32" height="14" forecolor="#330099" uuid="61f68029-93be-4789-8cc4-9e6ec92a1bb0"/>
+				<reportElement x="13" y="60" width="32" height="14" forecolor="#330099" uuid="61f68029-93be-4789-8cc4-9e6ec92a1bb0"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
@@ -72,63 +79,63 @@ WHERE
 				<text><![CDATA[Ministère de l'enseignement supérieur et de la recherche scientifique]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="108" width="32" height="14" forecolor="#330099" uuid="a67d3e36-14e4-4967-8dfc-468d32f2ea27"/>
+				<reportElement x="13" y="116" width="32" height="14" forecolor="#330099" uuid="a67d3e36-14e4-4967-8dfc-468d32f2ea27"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
 				<text><![CDATA[Code:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="38" y="80" width="131" height="14" uuid="b04014d5-e4d1-4643-8cf3-2e57a7b29f2f"/>
+				<reportElement x="45" y="88" width="131" height="14" uuid="b04014d5-e4d1-4643-8cf3-2e57a7b29f2f"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_dateNs}.toString()+" à "+$F{personne1_lieu}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_BIRTHDAY}.toString()+" à "+$F{userinfo_CITY}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="38" y="108" width="131" height="14" uuid="c440e6ce-6568-4524-a311-804f6a0adcba"/>
+				<reportElement x="45" y="116" width="131" height="14" uuid="c440e6ce-6568-4524-a311-804f6a0adcba"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_card_id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_Badgenumber}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="6" y="80" width="32" height="14" forecolor="#330099" uuid="b9b25d83-6087-4e83-a137-dbdc91581075"/>
+				<reportElement x="13" y="88" width="32" height="14" forecolor="#330099" uuid="b9b25d83-6087-4e83-a137-dbdc91581075"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
 				<text><![CDATA[Née le:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="122" width="32" height="14" forecolor="#330099" uuid="0216e52f-ee16-435e-81a3-434f9bfb9bb5"/>
+				<reportElement x="13" y="130" width="32" height="14" forecolor="#330099" uuid="0216e52f-ee16-435e-81a3-434f9bfb9bb5"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
 				<text><![CDATA[Chambre:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="38" y="66" width="131" height="14" uuid="1d848e78-90d9-4792-9336-24d20953db52"/>
+				<reportElement x="45" y="74" width="131" height="14" uuid="1d848e78-90d9-4792-9336-24d20953db52"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_prénom}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_lastname}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="38" y="94" width="131" height="14" uuid="6c5174a5-af73-4a90-b50f-c7b2f6f646c7"/>
+				<reportElement x="45" y="102" width="131" height="14" uuid="6c5174a5-af73-4a90-b50f-c7b2f6f646c7"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_filière}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_Education}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="38" y="122" width="131" height="14" uuid="f42e2f56-efcd-408d-8ceb-8d7e4b07be9c"/>
+				<reportElement x="45" y="130" width="131" height="14" uuid="f42e2f56-efcd-408d-8ceb-8d7e4b07be9c"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_numchambre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_numchambre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="6" y="66" width="32" height="14" forecolor="#330099" uuid="d87b7363-e518-4d2a-89f5-862dfe13f4ba"/>
+				<reportElement x="13" y="74" width="32" height="14" forecolor="#330099" uuid="d87b7363-e518-4d2a-89f5-862dfe13f4ba"/>
 				<textElement>
 					<font fontName="Serif" size="8"/>
 				</textElement>
@@ -154,6 +161,13 @@ WHERE
 					<font size="6"/>
 				</textElement>
 				<text><![CDATA[Résidence universitaire "Majdoub"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="44" width="222" height="16" forecolor="#0000FF" uuid="317dc5a0-252b-4292-af67-1da495974cc8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARTE D'ACCES]]></text>
 			</staticText>
 		</band>
 	</title>

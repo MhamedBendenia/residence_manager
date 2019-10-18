@@ -230,21 +230,14 @@ public class Connexion extends javax.swing.JFrame {
                 stat=cnx.obtenirconnexion().createStatement();
                 rs= stat.executeQuery(sql);
                 rs.next();
-                if( rs.getInt("licence")>0 && Arrays.equals(mdp, rs.getString("pass").toCharArray())){
-                    if(rs.getInt("last_conn") != Calendar.getInstance().get(Calendar.DAY_OF_YEAR))
-                        stat.executeUpdate("UPDATE admin SET  licence=licence-1, last_conn ='"+Calendar.getInstance().get(Calendar.DAY_OF_YEAR)+"'where id=1");
+                if(Arrays.equals(mdp, rs.getString("pass").toCharArray())){
                     AcceuilAdmin AdminA= new AcceuilAdmin();
                     AdminA.setVisible(true);
                     this.setVisible(false);  
                 } 
                 else{
-                    if(rs.getInt("licence")<=0)
-                        JOptionPane.showMessageDialog(null,"Votre licence a expiré. Pour renouveller votre licence, veuillez contacter l'adresse suivante:\n medbendenia27@gmail.com !");
-                    else
-                        JOptionPane.showMessageDialog(null,"Mot de passe incorrecte !");
-                    Connexion z= new  Connexion ();
-                    z.setVisible(true);
-                    this.setVisible(false);
+                    JOptionPane.showMessageDialog(null,"Mot de passe incorrecte !");
+                    password.setText("");
                 }
             }catch(Exception ex){
                 System.err.println(ex);

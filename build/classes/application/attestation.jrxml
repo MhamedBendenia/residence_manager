@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bb1a4c6a-75f9-427f-a1ee-fe8ab98c3965">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="184"/>
 	<parameter name="card_id" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -14,25 +14,25 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     personne1.`nom_ar` AS personne1_nom_ar,
-     personne1.`prénom_ar` AS personne1_prénom_ar,
-     personne1.`dateNs` AS personne1_dateNs,
-     personne1.`lieu` AS personne1_lieu,
-     personne1.`filière` AS personne1_filière,
-     personne1.`numchambre` AS personne1_numchambre,
-     personne1.`card_id` AS personne1_card_id
+     userinfo.`BIRTHDAY` AS userinfo_BIRTHDAY,
+     userinfo.`CITY` AS userinfo_CITY,
+     userinfo.`nom_ar` AS userinfo_nom_ar,
+     userinfo.`prénom_ar` AS userinfo_prénom_ar,
+     userinfo.`numchambre` AS userinfo_numchambre,
+     userinfo.`CardNo` AS userinfo_CardNo,
+     userinfo.`Education_ar` AS userinfo_Education_ar
 FROM
-     `personne1` personne1
+     `userinfo` userinfo
 WHERE
-     personne1.`card_id` LIKE $P{card_id}]]>
+     userinfo.`CardNo` LIKE $P{card_id}]]>
 	</queryString>
-	<field name="personne1_nom_ar" class="java.lang.String"/>
-	<field name="personne1_prénom_ar" class="java.lang.String"/>
-	<field name="personne1_dateNs" class="java.sql.Date"/>
-	<field name="personne1_lieu" class="java.lang.String"/>
-	<field name="personne1_filière" class="java.lang.String"/>
-	<field name="personne1_numchambre" class="java.lang.String"/>
-	<field name="personne1_card_id" class="java.lang.String"/>
+	<field name="userinfo_BIRTHDAY" class="java.sql.Date"/>
+	<field name="userinfo_CITY" class="java.lang.String"/>
+	<field name="userinfo_nom_ar" class="java.lang.String"/>
+	<field name="userinfo_prénom_ar" class="java.lang.String"/>
+	<field name="userinfo_numchambre" class="java.lang.String"/>
+	<field name="userinfo_CardNo" class="java.lang.String"/>
+	<field name="userinfo_Education_ar" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -134,7 +134,7 @@ WHERE
 				<textElement textAlignment="Right">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_prénom_ar}+" "+$F{personne1_nom_ar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_prénom_ar}+" "+$F{userinfo_nom_ar}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="483" y="52" width="72" height="20" uuid="16a8bb28-5442-409f-9e08-130f2f8c8f0e"/>
@@ -148,7 +148,7 @@ WHERE
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_dateNs}.toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_BIRTHDAY}.toString()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="336" y="52" width="6" height="20" uuid="18fbf2f6-48fb-4782-a8a0-55c373b4de91"/>
@@ -162,7 +162,7 @@ WHERE
 				<textElement textAlignment="Right">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_lieu}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_CITY}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="507" y="72" width="48" height="20" uuid="3f61d19f-2392-4389-b51b-b4c724ad5b5d"/>
@@ -176,7 +176,7 @@ WHERE
 				<textElement textAlignment="Right">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_filière}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_Education_ar}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="507" y="105" width="48" height="20" uuid="8007166c-3d77-47eb-85b5-b4b21b81e90c"/>
@@ -190,7 +190,7 @@ WHERE
 				<textElement textAlignment="Right">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{personne1_numchambre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{userinfo_numchambre}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="495" y="125" width="60" height="20" uuid="68f46174-1467-4c7b-b44c-d25a221e637c"/>
